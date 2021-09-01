@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div #ele *ngFor="let bike of myBikes; index as i" class="col-sm-12 col-md-4 cs_bike" (click)="viewBike(i, ele)">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img [(src)]="bike.img_path">
+                        </div>
+                        <div class="col-sm-9">
+                            <h6>{{bike.model}} <ngb-rating [(rate)]="bike.rating"></ngb-rating></h6>
+                            <span>{{bike.street}}, {{bike.city}}</span>
+                            <p>{{bike.state}}, {{bike.country}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <div id="full_bike_img" *ngIf="viewDetail" class="cs_detail_view_left text-white col-sm-4">
+                    <!-- <img [(src)]="detail_bike.img_path"> -->
+                    <ngb-carousel *ngIf="detail_bike.images != []">
+                        <ng-template *ngFor="let img of detail_bike.images; index as j" ngbSlide>
+                          <div class="picsum-img-wrapper">
+                            <img [src]="img" alt="Random first slide" style="height: inherit">
+                          </div>
+                        </ng-template>
+                    </ngb-carousel>
+                </div>
+                <div *ngIf="viewDetail" class="cs_detail_view_center text-white col-sm-4">
+                    <h5>{{detail_bike.model}} <ngb-rating [(rate)]="detail_bike.rating"></ngb-rating></h5>
+                    <span>{{detail_bike.street}}, {{detail_bike.city}}</span>
+                    <p>{{detail_bike.state}}, {{detail_bike.country}}</p>
+                    <p>This bike is {{detail_bike.age}} old.</p>
+                    <p>Total income : {{detail_bike.income}}</p>
+                    <p>P.S.: {{detail_bike.suggestions}}</p>
+                </div>
+                <div *ngIf="viewDetail" class="cs_detail_view_right col-sm-4">
+                    <h6>Reviews:</h6>
+                    <div *ngFor="let review of detail_bike.reviews">
+                        <fa-icon [icon]="faUser"></fa-icon> {{review.user}} <ngb-rating [(rate)]="review.rating"></ngb-rating>
+                        <p>{{review.comment}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

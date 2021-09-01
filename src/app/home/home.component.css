@@ -1,0 +1,19 @@
+img {
+    max-height: 100%;
+    max-width: 87%;
+}
+img:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
+    /* transform: scale(1.1); */
+}
+.row{
+    margin-top: 10px;
+}
+.home:hover{
+    cursor: pointer;
+}

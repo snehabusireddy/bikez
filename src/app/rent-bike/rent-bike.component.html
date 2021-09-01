@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row">
+        <div [ngClass]="full_view ? 'col-sm-12' : 'col-sm-8'">
+            <div class="row">
+                <div *ngFor="let bike of bikes; index as i" [ngClass]="full_view ? 'col-sm-12 col-md-4' : 'col-sm-12 col-md-6'" class="cs_bike">
+                    <div class="row" (click)="viewBike(i)">
+                        <div class="col-sm-3">
+                            <img [(src)]="bike.img_path">
+                        </div>
+                        <div class="col-sm-9">
+                            <h6>{{bike.model}} <ngb-rating [(rate)]="bike.rating"></ngb-rating></h6>
+                            <span>{{bike.street}}, {{bike.city}}</span>
+                            <p>{{bike.state}}, {{bike.country}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf='!full_view' class='text-white cs_partial_view bg-dark col-sm-4'>
+            <br>
+            <ngb-carousel *ngIf="full_bike.images != []">
+                <ng-template *ngFor="let img of full_bike.images; index as j" ngbSlide>
+                  <div class="picsum-img-wrapper">
+                    <img [src]="img" alt="Random first slide">
+                  </div>
+                </ng-template>
+            </ngb-carousel>
+            <hr>
+            <h5>{{full_bike.model}} <ngb-rating [(rate)]="full_bike.rating"></ngb-rating></h5>
+            <span>{{full_bike.street}}, {{full_bike.city}}</span>
+            <p>{{full_bike.state}}, {{full_bike.country}}</p>
+            <p>This bike is {{full_bike.age}} old.</p>
+            <h6>Reviews:</h6>
+            <div *ngFor="let review of full_bike.reviews">
+                <fa-icon [icon]="faUser"></fa-icon> {{review.user}} <ngb-rating [(rate)]="review.rating"></ngb-rating>
+                <p>{{review.comment}}</p>
+            </div>
+        </div>
+    </div>
+</div>

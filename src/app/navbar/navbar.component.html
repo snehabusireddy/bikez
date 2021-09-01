@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <a class="navbar-brand" href="">Bikez</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+    aria-expanded="false" (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto">
+        <form *ngIf="!isLoggedIn" class="form-inline">
+          <input class="form-control mr-sm-2" type="username" placeholder="Email / Phone Number" aria-label="username">
+          <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="password">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="login()">Login</button>
+          <!-- <li class="nav-item"><a class="nav-link"(click)="login()">Login</a></li> -->
+        </form>
+        <li *ngIf="isLoggedIn" class="nav-item"><a class="nav-link" routerLink="offer-bike">Offer</a></li>
+        <li *ngIf="isLoggedIn" class="nav-item"><a class="nav-link" routerLink="rent-bike">Rent</a></li>
+        <!-- <fa-icon *ngIf="isLoggedIn" [icon]="faBell"></fa-icon> -->
+        <!-- <i class="fas fa-bell"></i> -->
+        
+        <li *ngIf="isLoggedIn" class="nav-item"><a class="nav-link" routerLink="">My Account</a></li>
+    </ul>
+  </div>
+</nav>

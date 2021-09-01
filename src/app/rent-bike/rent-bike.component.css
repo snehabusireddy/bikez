@@ -1,0 +1,21 @@
+.cs_partial_view{
+    height: 100vh;
+    overflow-y: auto;
+}
+hr{
+    background-color: rgb(128, 126, 126);
+}
+.cs_fix_top{
+    position: fixed;
+    top: 0;
+    right: 0px; 
+    height: 100vh;
+    overflow-y: auto;
+}
+.carousel-indicators li{
+    color: black;
+}
+.carousel-indicators li {
+    width : 2px!important;
+  }
+  
